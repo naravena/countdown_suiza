@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Información de Vuelos</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+    <style>
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5722;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>Información de Vuelos</h1>
+
+        <!-- Reloj cuenta atrás para el primer vuelo -->
+     <div>
+    <h5>Cuenta regresiva para el vuelo de las 07:00 desde Málaga</h5>
+    <div id="countdown" class="countdown"></div>
+    </div>
+
+    <!-- Tabla de vuelos desde Málaga -->
+    <h2>Viaje desde Málaga (Papá, Mamá, Nico, Laura)</h2>
+    <table>
+        <tr>
+            <th>Fecha de Ida</th>
+            <th>Hora de Salida</th>
+            <th>Hora de Llegada</th>
+            <th>Número de Vuelo</th>
+        </tr>
+        <tr>
+            <td>Viernes 27 sept</td>
+            <td>07:00</td>
+            <td>09:35</td>
+            <td>U2 7021</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Fecha de Vuelta</th>
+            <th>Hora de Salida</th>
+            <th>Hora de Llegada</th>
+            <th>Número de Vuelo</th>
+        </tr>
+        <tr>
+            <td>Martes 01 oct</td>
+            <td>16:35</td>
+            <td>19:35</td>
+            <td>EZS1007</td>
+        </tr>
+    </table>
+
+    <!-- Tabla de vuelos desde Madrid -->
+    <h2>Viaje desde Madrid (Rosalba)</h2>
+    <table>
+        <tr>
+            <th>Fecha de Ida</th>
+            <th>Hora de Salida</th>
+            <th>Hora de Llegada</th>
+            <th>Número de Vuelo</th>
+        </tr>
+        <tr>
+            <td>Viernes 27 sept</td>
+            <td>16:35</td>
+            <td>18:50</td>
+            <td>EZS1016</td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Fecha de Vuelta</th>
+            <th>Hora de Salida</th>
+            <th>Hora de Llegada</th>
+            <th>Número de Vuelo</th>
+        </tr>
+        <tr>
+            <td>Martes 01 oct</td>
+            <td>07:05</td>
+            <td>09:25</td>
+            <td>EZS1015</td>
+        </tr>
+    </table>
+
+    <script>
+        // Fecha y hora del vuelo (27 septiembre 2024, 07:00)
+        var vueloFecha = new Date("Sept 27, 2024 07:00:00").getTime();
+
+        // Actualizar la cuenta atrás cada segundo
+        var x = setInterval(function() {
+            // Obtener la fecha y hora actual
+            var now = new Date().getTime();
+
+            // Calcular la diferencia entre la fecha actual y la del vuelo
+            var distancia = vueloFecha - now;
+
+            // Cálculo del tiempo para días, horas, minutos y segundos
+            var dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+            var horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            var segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+            // Mostrar la cuenta atrás
+            document.getElementById("countdown").innerHTML = dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
+
+            // Si la cuenta llega a cero, mostrar un mensaje
+            if (distancia < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "El vuelo ha salido";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
